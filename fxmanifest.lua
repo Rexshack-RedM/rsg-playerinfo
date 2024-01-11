@@ -4,7 +4,7 @@ game 'rdr3'
 
 author 'RexShack#3041'
 description 'rsg-playerinfo'
-version '1.0.0'
+version '1.1.0'
 
 client_scripts {
     'client/client.lua'
@@ -17,7 +17,8 @@ server_scripts {
 shared_scripts {
     '@ox_lib/init.lua',
     '@rsg-core/shared/locale.lua',
-    'locales/en.lua', -- preferred language
+    'locales/en.lua',
+    'locales/*.lua',
     'config.lua',
 }
 

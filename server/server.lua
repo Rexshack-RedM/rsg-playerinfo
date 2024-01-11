@@ -31,7 +31,7 @@ end
 
 -----------------------------------------------------------------------
 
-RSGCore.Commands.Add('info', 'View Stats', {}, true, function(source, args)
+RSGCore.Commands.Add('info', Lang:t('menu.view_stats'), {}, true, function(source, args)
     TriggerClientEvent('rsg-playerstats:client:openPlayerStats', source)
 end)
 
