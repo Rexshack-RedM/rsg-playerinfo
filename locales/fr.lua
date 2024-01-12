@@ -1,8 +1,6 @@
 local Translations = {
-    
     error = {
         error_var = 'Example Text',
-        
     },
     success = {
         success_var = 'Example Text',
@@ -18,7 +16,7 @@ local Translations = {
         funds_in_bank = 'Fonds en banque',
         citizenid = 'Numéro de citoyen',
         serverid = 'ID du serveur',
-        view_stats = 'Voir les stats',
+        view_stats = 'Voir mes informations',
     },
 }
 

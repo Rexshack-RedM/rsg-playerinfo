@@ -6,5 +6,5 @@ Config.PlayerInfoSetup = {
     show_cash = true,
     show_bank = true,
     show_citizenid = true,
-    show_serverid = false,
+    show_serverid = true,
 }

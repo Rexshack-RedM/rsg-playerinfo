@@ -1,8 +1,6 @@
 local Translations = {
-    
     error = {
         error_var = 'Example Text',
-        
     },
     success = {
         success_var = 'Example Text',
