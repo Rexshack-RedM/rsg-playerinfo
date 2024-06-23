@@ -4,6 +4,13 @@ RegisterNetEvent('rsg-playerstats:client:openPlayerStats', function()
     RSGCore.Functions.TriggerCallback('rsg-playerstats:server:getPlayerData', function(data)
         optionsArray = {}
         index = 1
+        if Config.PlayerInfoSetup.show_outlawstatus == true then
+            table.insert(optionsArray, index, {
+                title = Lang:t('menu.outlawstatus')..': '..data.outlawstatus,
+                icon = 'fa-solid fa-mask',
+            })
+            index = index + 1
+        end
         if Config.PlayerInfoSetup.show_job == true then
             table.insert(optionsArray, index, {
                 title = Lang:t('menu.job')..': '..data.job,
@@ -22,13 +29,6 @@ RegisterNetEvent('rsg-playerstats:client:openPlayerStats', function()
             table.insert(optionsArray, index, {
                 title = Lang:t('menu.funds_in_cash')..': '..tostring(data.cash)..' $',
                 icon = 'fa-solid fa-money-bill',
-            })
-            index = index + 1
-        end
-        if Config.PlayerInfoSetup.show_bank == true then
-            table.insert(optionsArray, index, {
-                title = Lang:t('menu.funds_in_bank')..': '..tostring(data.bank)..' $',
-                icon = 'fa-solid fa-building-columns',
             })
             index = index + 1
         end

@@ -10,6 +10,7 @@ local Translations = {
     },
     menu = {
         no_data = 'No data',
+        outlawstatus = 'Outlaw Status',
         job = 'Job',
         job_grade = 'Grade',
         funds_in_cash = 'Funds in cash',
