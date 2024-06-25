@@ -32,6 +32,41 @@ RegisterNetEvent('rsg-playerstats:client:openPlayerStats', function()
             })
             index = index + 1
         end
+        if Config.PlayerInfoSetup.show_bank == true then
+            table.insert(optionsArray, index, {
+                title = Lang:t('menu.funds_in_bank')..': '..tostring(data.bank)..' $',
+                icon = 'fa-solid fa-money-bill',
+            })
+            index = index + 1
+        end
+        if Config.PlayerInfoSetup.show_rhobank == true then
+            table.insert(optionsArray, index, {
+                title = Lang:t('menu.funds_in_rhobank')..': '..tostring(data.rhobank)..' $',
+                icon = 'fa-solid fa-money-bill',
+            })
+            index = index + 1
+        end
+        if Config.PlayerInfoSetup.show_valbank == true then
+            table.insert(optionsArray, index, {
+                title = Lang:t('menu.funds_in_valbank')..': '..tostring(data.valbank)..' $',
+                icon = 'fa-solid fa-money-bill',
+            })
+            index = index + 1
+        end
+        if Config.PlayerInfoSetup.show_blkbank == true then
+            table.insert(optionsArray, index, {
+                title = Lang:t('menu.funds_in_blkbank')..': '..tostring(data.blkbank)..' $',
+                icon = 'fa-solid fa-money-bill',
+            })
+            index = index + 1
+        end
+        if Config.PlayerInfoSetup.show_armbank == true then
+            table.insert(optionsArray, index, {
+                title = Lang:t('menu.funds_in_armbank')..': '..tostring(data.armbank)..' $',
+                icon = 'fa-solid fa-money-bill',
+            })
+            index = index + 1
+        end
         if Config.PlayerInfoSetup.show_citizenid == true then
             table.insert(optionsArray, index, {
                 title = Lang:t('menu.citizenid')..': '..data.citizenid,
