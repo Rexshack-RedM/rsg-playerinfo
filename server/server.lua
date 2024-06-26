@@ -16,11 +16,11 @@ RSGCore.Functions.CreateCallback('rsg-playerstats:server:getPlayerData', functio
     local grade        = Player.PlayerData.job.grade.level
     local cash         = Player.PlayerData.money["cash"]
     local citizenid    = Player.PlayerData.citizenid
-    local bank = Player.PlayerData.money["bank"]
-    local valbank = Player.PlayerData.money["valbank"]
-    local rhobank = Player.PlayerData.money["rhobank"]
-    local blkbank = Player.PlayerData.money["blkbank"]
-    local armbank = Player.PlayerData.money["armbank"]
+    local bank         = Player.PlayerData.money["bank"]
+    local valbank      = Player.PlayerData.money["valbank"]
+    local rhobank      = Player.PlayerData.money["rhobank"]
+    local blkbank      = Player.PlayerData.money["blkbank"]
+    local armbank      = Player.PlayerData.money["armbank"]
 
     if outlawstatus == 0 then
         newoutlawstatus = 'Law Abiding Citizen'
@@ -31,18 +31,18 @@ RSGCore.Functions.CreateCallback('rsg-playerstats:server:getPlayerData', functio
     end
 
     cb({
-        firstname = firstname,
-        lastname  = lastname,
+        firstname    = firstname,
+        lastname     = lastname,
         outlawstatus = newoutlawstatus,
-        job       = job, 
-        grade     = grade,
-        cash      = cash,
-        bank = bank,
-        valbank = valbank,
-        rhobank = rhobank,
-        blkbank = blkbank,
-        armbank = armbank,
-        citizenid = citizenid,
+        job          = job, 
+        grade        = grade,
+        cash         = cash,
+        bank         = bank,
+        valbank      = valbank,
+        rhobank      = rhobank,
+        blkbank      = blkbank,
+        armbank      = armbank,
+        citizenid    = citizenid,
         
     })
 
