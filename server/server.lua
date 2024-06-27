@@ -11,7 +11,6 @@ RSGCore.Functions.CreateCallback('rsg-playerstats:server:getPlayerData', functio
     local Player       = RSGCore.Functions.GetPlayer(src)
     local firstname    = Player.PlayerData.charinfo.firstname
     local lastname     = Player.PlayerData.charinfo.lastname
-    local outlawstatus = Player.PlayerData.metadata["outlawstatus"]
     local job          = Player.PlayerData.job.label
     local grade        = Player.PlayerData.job.grade.level
     local cash         = Player.PlayerData.money["cash"]
@@ -22,12 +21,15 @@ RSGCore.Functions.CreateCallback('rsg-playerstats:server:getPlayerData', functio
     local blkbank      = Player.PlayerData.money["blkbank"]
     local armbank      = Player.PlayerData.money["armbank"]
 
+    local result = MySQL.query.await('SELECT outlawstatus FROM players WHERE citizenid=@citizenid', { ['@citizenid'] = Player.PlayerData.citizenid } )
+    local outlawstatus = tonumber(result[1].outlawstatus)
+
     if outlawstatus == 0 then
         newoutlawstatus = 'Law Abiding Citizen'
     elseif outlawstatus > 0 and outlawstatus < 100 then
         newoutlawstatus = 'Petty Criminal'
     elseif outlawstatus >= 100 then
-        newoutlawstatus = 'OutLaw'
+        newoutlawstatus = 'OutLaw ($'..outlawstatus..')'
     end
 
     cb({

@@ -3,13 +3,14 @@ rdr3_warning 'I acknowledge that this is a prerelease build of RedM, and I am aw
 game 'rdr3'
 
 description 'rsg-playerinfo'
-version '1.0.3'
+version '1.0.4'
 
 client_scripts {
     'client/client.lua'
 }
 
 server_scripts {
+    '@oxmysql/lib/MySQL.lua',
     'server/server.lua',
     'server/versionchecker.lua'
 }
