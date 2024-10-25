@@ -1,0 +1,20 @@
+{
+    "sv_view_stats": "Voir les statistiques",
+    "sv_outlawstatus_a": "Citoyen respectueux des lois",
+    "sv_outlawstatus_b": "Criminel mineur",
+    "sv_outlawstatus_c": "Hors-la-loi",
+
+    "cl_outlawstatus": "Statut de hors-la-loi",
+    "cl_job": "Métier",
+    "cl_job_grade": "Niveau de métier",
+    "cl_funds_in_cash": "Fonds en espèces",
+    "cl_funds_in_bloodmoney": "Fonds en argent sale",
+    "cl_funds_in_bank": "Fonds à la banque de St. Denis",
+    "cl_funds_in_rhobank": "Fonds à la banque de Rhodes",
+    "cl_funds_in_valbank": "Fonds à la banque de Valentine",
+    "cl_funds_in_blkbank": "Fonds à la banque de Blackwater",
+    "cl_funds_in_armbank": "Fonds à la banque d'Armadillo",
+    "cl_citizenid": "ID de citoyen",
+    "cl_serverid": "ID de serveur",
+    "cl_no_data": "Aucune donnée"
+}
