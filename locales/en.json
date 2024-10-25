@@ -1,0 +1,21 @@
+{
+    "sv_view_stats" : "View stats",
+    "sv_outlawstatus_a" : "Law Abiding Citizen",
+    "sv_outlawstatus_b" : "Petty Criminal",
+    "sv_outlawstatus_c" : "OutLaw",
+
+    "cl_outlawstatus" : "Outlaw Status",
+    "cl_job" : "Job",
+    "cl_job_grade" : "Job Grade",
+    "cl_funds_in_cash" : "Funds in cash",
+    "cl_funds_in_bloodmoney" : "Funds in bloodmoney",
+    "cl_funds_in_bank" : "Funds in St.Denis bank",
+    "cl_funds_in_rhobank" : "Funds in Rhodes bank",
+    "cl_funds_in_valbank" : "Funds in Valentine bank",
+    "cl_funds_in_blkbank" : "Funds in Blackwater bank",
+    "cl_funds_in_armbank" : "Funds in Armadillo bank",
+    "cl_citizenid" : "Citizen ID",
+    "cl_serverid": "Server ID",
+    "cl_no_data" : "No data"
+
+}

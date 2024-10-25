@@ -5,6 +5,7 @@ Config.PlayerInfoSetup = {
     show_job = true,
     show_job_grade = true,
     show_cash = true,
+    show_bloodmoney = true,
     show_bank = true,
     show_valbank = true,
     show_blkbank = true,
