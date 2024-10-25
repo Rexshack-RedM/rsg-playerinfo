@@ -5,6 +5,11 @@ game 'rdr3'
 description 'rsg-playerinfo'
 version '1.0.4'
 
+shared_scripts {
+    '@ox_lib/init.lua',
+    'config.lua',
+}
+
 client_scripts {
     'client/client.lua'
 }
@@ -15,12 +20,8 @@ server_scripts {
     'server/versionchecker.lua'
 }
 
-shared_scripts {
-    '@ox_lib/init.lua',
-    '@rsg-core/shared/locale.lua',
-    'locales/en.lua',
-    'locales/*.lua',
-    'config.lua',
+files{
+    'locales/*.json',
 }
 
 dependencies {
