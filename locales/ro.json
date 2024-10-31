@@ -1,0 +1,20 @@
+{
+    "sv_view_stats" : "Vizualizeaza statistici",
+    "sv_outlawstatus_a" : "Cetatean Respectuos",
+    "sv_outlawstatus_b" : "Criminal Muncitor",
+    "sv_outlawstatus_c" : "Fugar",
+
+    "cl_outlawstatus" : "Status Fugar",
+    "cl_job" : "Loc de munca",
+    "cl_job_grade" : "Grad de Munca",
+    "cl_funds_in_cash" : "Fonduri in numerar",
+    "cl_funds_in_bloodmoney" : "Fonduri in bani obtinuti ilegal",
+    "cl_funds_in_bank" : "Fonduri in banca St.Denis",
+    "cl_funds_in_rhobank" : "Fonduri in banca Rhodes",
+    "cl_funds_in_valbank" : "Fonduri in banca Valentine",
+    "cl_funds_in_blkbank" : "Fonduri in banca Blackwater",
+    "cl_funds_in_armbank" : "Fonduri in banca Armadillo",
+    "cl_citizenid" : "ID Cetatean",
+    "cl_serverid": "ID Server",
+    "cl_no_data" : "Fara date"
+}
