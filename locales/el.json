@@ -1,0 +1,20 @@
+{
+    "sv_view_stats" : "Προβολή στατιστικών",
+    "sv_outlawstatus_a" : "Νομοταγής Πολίτης",
+    "sv_outlawstatus_b" : "Μικροεγκληματίας",
+    "sv_outlawstatus_c" : "Παράνομος",
+
+    "cl_outlawstatus" : "Κατάσταση Παρανομίας",
+    "cl_job" : "Επάγγελμα",
+    "cl_job_grade" : "Βαθμός Επαγγέλματος",
+    "cl_funds_in_cash" : "Χρήματα σε μετρητά",
+    "cl_funds_in_bloodmoney" : "Χρήματα σε αιματοχρήματα",
+    "cl_funds_in_bank" : "Χρήματα στην τράπεζα του St.Denis",
+    "cl_funds_in_rhobank" : "Χρήματα στην τράπεζα της Rhodes",
+    "cl_funds_in_valbank" : "Χρήματα στην τράπεζα του Valentine",
+    "cl_funds_in_blkbank" : "Χρήματα στην τράπεζα του Blackwater",
+    "cl_funds_in_armbank" : "Χρήματα στην τράπεζα του Armadillo",
+    "cl_citizenid" : "ID Πολίτη",
+    "cl_serverid": "ID Διακομιστή",
+    "cl_no_data" : "Δεν υπάρχουν δεδομένα"
+}
