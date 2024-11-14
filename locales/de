@@ -1,0 +1,20 @@
+{
+    "sv_view_stats" : "Statistiken anzeigen",
+    "sv_outlawstatus_a" : "Gesetzestreuer Bürger",
+    "sv_outlawstatus_b" : "Kleinkrimineller",
+    "sv_outlawstatus_c" : "Gesetzloser",
+
+    "cl_outlawstatus" : "Gesetzlosen-Status",
+    "cl_job" : "Beruf",
+    "cl_job_grade" : "Berufsrang",
+    "cl_funds_in_cash" : "Geld in bar",
+    "cl_funds_in_bloodmoney" : "Geld in Blutschuld",
+    "cl_funds_in_bank" : "Geld in der Bank von St. Denis",
+    "cl_funds_in_rhobank" : "Geld in der Bank von Rhodes",
+    "cl_funds_in_valbank" : "Geld in der Bank von Valentine",
+    "cl_funds_in_blkbank" : "Geld in der Bank von Blackwater",
+    "cl_funds_in_armbank" : "Geld in der Bank von Armadillo",
+    "cl_citizenid" : "Bürger-ID",
+    "cl_serverid": "Server-ID",
+    "cl_no_data" : "Keine Daten"
+}
