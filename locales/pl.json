@@ -1,0 +1,20 @@
+{
+    "sv_view_stats" : "Zobacz statystyki",
+    "sv_outlawstatus_a" : "Prawo i Porządek",
+    "sv_outlawstatus_b" : "Drobny Przestępca",
+    "sv_outlawstatus_c" : "Banita",
+
+    "cl_outlawstatus" : "Status Banity",
+    "cl_job" : "Zawód",
+    "cl_job_grade" : "Poziom w zawodzie",
+    "cl_funds_in_cash" : "Gotówka",
+    "cl_funds_in_bloodmoney" : "Środki w Blood Money",
+    "cl_funds_in_bank" : "Środki w banku St.Denis",
+    "cl_funds_in_rhobank" : "Środki w banku Rhodes",
+    "cl_funds_in_valbank" : "Środki w banku Valentine",
+    "cl_funds_in_blkbank" : "Środki w banku Blackwater",
+    "cl_funds_in_armbank" : "Środki w banku Armadillo",
+    "cl_citizenid" : "ID Obywatela",
+    "cl_serverid": "ID Serwera",
+    "cl_no_data" : "Brak danych"
+}
