@@ -14,3 +14,9 @@ Config.PlayerInfoSetup = {
     show_citizenid = true,
     show_serverid = true,
 }
+
+-- While NUI is open, block game controls but allow push-to-talk.
+Config.AllowPushToTalkWhileOpen = true
+Config.PushToTalkControls = {
+    0x4BC9DABB, -- INPUT_PUSH_TO_TALK
+}

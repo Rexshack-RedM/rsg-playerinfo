@@ -16,5 +16,8 @@
     "cl_funds_in_armbank" : "Geld in der Bank von Armadillo",
     "cl_citizenid" : "Bürger-ID",
     "cl_serverid": "Server-ID",
-    "cl_no_data" : "Keine Daten"
+    "cl_no_data" : "Keine Daten",
+
+    "cl_ui_subtitle" : "Spielerinformationen",
+    "cl_ui_close" : "Schließen"
 }

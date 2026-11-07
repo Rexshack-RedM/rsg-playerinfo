@@ -7,13 +7,12 @@
 ![License](https://img.shields.io/badge/license-GPL--3.0-green)
 
 > Shows a small context menu with the player's name and configurable stats (outlaw status, job, cash, banks, IDs, etc.).  
-> Triggered via the `/info` command and built with lib contexts (ox_lib).
+> Triggered via the `/info` command and shown in a custom NUI panel (RDR2 leather & gold style).
 
 ---
 
 ## 🛠️ Dependencies
 - **rsg-core** (framework & player data)  
-- **ox_lib** (context menu & locale)
 
 **Locales included:** `en`, `fr`, `es`, `it`, `de`, `el`, `ro`  
 **License:** GPL‑3.0
@@ -23,9 +22,10 @@
 ## ✨ Features
 - 🔎 **/info command** opens a context menu showing player details.  
 - 📋 Configurable fields: outlaw status, job, job grade, cash, bloodmoney, multiple bank balances, Citizen ID and Server ID.  
-- 🧭 Uses `lib.registerContext` (`ox_lib`) to display the menu in the top-right.  
+- 🧭 Custom NUI panel in the top-right (close with the ✕ button, Close, ESC or Backspace).
+- 🎙️ Push-to-talk keeps working while the panel is open (`Config.AllowPushToTalkWhileOpen`).  
 - 🔁 Server callback (`rsg-playerstats:server:getPlayerData`) provides data to the client.  
-- 🌍 Multi-language support via `lib.locale()`.
+- 🌍 Multi-language support via rsg-core locales (`@rsg-core/shared/locale.lua`, set language with `setr rsg:locale <lang>`).
 
 ---
 
@@ -64,10 +64,9 @@ Toggle any of these to show/hide the corresponding row in the `/info` context me
 
 ## 📂 Installation
 1. Place `rsg-playerinfo` in your `resources/[rsg]` folder.  
-2. Ensure `rsg-core` and `ox_lib` are installed.  
+2. Ensure `rsg-core` is installed (ox_lib is no longer required).  
 3. Add to your `server.cfg`:
 ```cfg
-ensure ox_lib
 ensure rsg-core
 ensure rsg-playerinfo
 ```

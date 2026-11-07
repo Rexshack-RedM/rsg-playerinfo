@@ -1,5 +1,4 @@
 local RSGCore = exports['rsg-core']:GetCoreObject()
-lib.locale()
 
 RSGCore.Commands.Add('info', locale('sv_view_stats'), {}, true, function(source, args)
     TriggerClientEvent('rsg-playerstats:client:openPlayerStats', source)

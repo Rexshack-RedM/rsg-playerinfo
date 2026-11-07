@@ -16,5 +16,8 @@
     "cl_funds_in_armbank" : "Χρήματα στην τράπεζα του Armadillo",
     "cl_citizenid" : "ID Πολίτη",
     "cl_serverid": "ID Διακομιστή",
-    "cl_no_data" : "Δεν υπάρχουν δεδομένα"
+    "cl_no_data" : "Δεν υπάρχουν δεδομένα",
+
+    "cl_ui_subtitle" : "Πληροφορίες Παίκτη",
+    "cl_ui_close" : "Κλείσιμο"
 }

@@ -16,5 +16,8 @@
     "cl_funds_in_armbank" : "Fonduri in banca Armadillo",
     "cl_citizenid" : "ID Cetatean",
     "cl_serverid": "ID Server",
-    "cl_no_data" : "Fara date"
+    "cl_no_data" : "Fara date",
+
+    "cl_ui_subtitle" : "Informații Jucător",
+    "cl_ui_close" : "Închide"
 }

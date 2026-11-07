@@ -16,5 +16,8 @@
     "cl_funds_in_armbank" : "Środki w banku Armadillo",
     "cl_citizenid" : "ID Obywatela",
     "cl_serverid": "ID Serwera",
-    "cl_no_data" : "Brak danych"
+    "cl_no_data" : "Brak danych",
+
+    "cl_ui_subtitle" : "Informacje o Graczu",
+    "cl_ui_close" : "Zamknij"
 }

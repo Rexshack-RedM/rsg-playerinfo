@@ -16,5 +16,8 @@
     "cl_funds_in_armbank" : "Fondos en el banco de Armadillo",
     "cl_citizenid" : "ID del Ciudadano",
     "cl_serverid": "ID del Servidor",
-    "cl_no_data" : "Sin datos"
+    "cl_no_data" : "Sin datos",
+
+    "cl_ui_subtitle" : "Información del Jugador",
+    "cl_ui_close" : "Cerrar"
 }
