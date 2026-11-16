@@ -5,16 +5,17 @@
 2. [Files](#files)
 3. [Flow](#flow)
 4. [Data returned by the callback](#data-returned-by-the-callback)
-5. [NUI](#nui)
-6. [Configuration](#configuration)
-7. [Events, callbacks and commands](#events-callbacks-and-commands)
-8. [Integrations](#integrations)
-9. [Security](#security)
-10. [Locales](#locales)
-11. [Troubleshooting](#troubleshooting)
+5. [Reputation tab](#reputation-tab)
+6. [NUI](#nui)
+7. [Configuration](#configuration)
+8. [Events, callbacks and commands](#events-callbacks-and-commands)
+9. [Integrations](#integrations)
+10. [Security](#security)
+11. [Locales](#locales)
+12. [Troubleshooting](#troubleshooting)
 
 ## Overview
-`/info` opens a dashboard covering `Config.ScreenPercent`% (default 80) of the screen. It shows money tiles, identity, employment, a medical check of the player's bones and standing (outlaw status and reputation). Every field is toggled in `Config.PlayerInfoSetup` (`shared/config.lua`). No database tables or items are added; bone health is stored in player metadata (`metadata.bones`).
+`/info` opens a dashboard covering `Config.ScreenPercent`% (default 80) of the screen. It shows money tiles, identity, employment, a medical check of the player's bones and standing (outlaw status). A second tab, Reputation, shows the player's XP per skill. Every field is toggled in `Config.PlayerInfoSetup` (`shared/config.lua`). No database tables or items are added; bone health is stored in player metadata (`metadata.bones`).
 
 ## Files
 | File | Purpose |
@@ -47,12 +48,33 @@
   money = { cash, bloodmoney, gold, bank },              -- bank = rsg-banking GetTotalBalance, else core bank
   branches = { rhobank?, valbank?, blkbank?, armbank? }, -- only keys that exist in PlayerData.money
   outlaw = { value, text, band = 'good' | 'warn' | 'bad' },
-  rep = { { name, value }, ... },                        -- from metadata.rep
+  rep = { { name, label?, icon?, value, level, into, need, pct, max }, ... }, -- from metadata.rep, highest XP first (see Reputation tab)
 }
 ```
 Bone conditions are not part of the callback: the client adds its live values (`BoneTracker.get()`).
 
 The callback returns `nil` when the player is not loaded or asks again within 750 ms.
+
+## Reputation tab
+The tab buttons under the header switch between Overview and Reputation (only shown when `Config.PlayerInfoSetup.show_reputation` is true and not in a doctor examination). The tab is purely client-side: both views are built from the same callback data, so switching costs no server call and live refresh keeps the selected tab.
+
+**Source:** `PlayerData.metadata.rep`, a table of `name -> XP` that other scripts change with `Player.Functions.AddRep(name, amount)` / `RemoveRep` / `GetRep`. This script only reads it.
+
+**Level maths** (server, `getReputation` in `server/server.lua`, config in `Config.Reputation`): total XP needed to reach level `L` is `floor(XPPerLevel * L ^ LevelGrowth)`; the level is the highest `L <= MaxLevel` whose threshold the XP has reached (level 0 below `XPPerLevel`). Each entry carries:
+
+| Field | Meaning |
+|---|---|
+| `name` | rep key as stored in metadata |
+| `label`, `icon` | from `Config.Reputation.Categories[name]`, or nil (the UI prettifies `name` and uses a star icon) |
+| `value` | total XP (floored) |
+| `level` | current level (0 - `MaxLevel`) |
+| `into`, `need` | XP gained inside the current level and XP the level spans (`need` is 0 at max level) |
+| `pct` | 0-100 progress to the next level (100 at max level) |
+| `max` | true at `MaxLevel` |
+
+Entries are sorted by XP (highest first). The header tiles show total XP, number of skills and the top skill. With no rep data the tab shows "No reputation earned yet". Negative XP counts as level 0 with an empty bar.
+
+**Naming skills:** add entries to `Config.Reputation.Categories`, e.g. `hunting = { label = 'Hunting', icon = 'fa-solid fa-crosshairs' }`. Labels in the config are plain text (not translated); skills without one use the prettified key. Tab and card text lives in the locale keys `cl_tab_overview`, `cl_tab_reputation`, `cl_rep_total_xp`, `cl_rep_skills`, `cl_rep_top`, `cl_rep_level`, `cl_rep_max`, `cl_rep_xp`, `cl_rep_none` (all 11 languages).
 
 ## Medical check (bones)
 **Bones:** `skull`, `neck`, `ribcage`, `lowerspine`, `pelvis`, `collarbone_l/_r`, `upperarm_l/_r`, `forearm_l/_r`, `hand_l/_r`, `thigh_l/_r`, `shin_l/_r`, `foot_l/_r`. Each has a condition from 100 (healthy) to 0 (broken). `_l` is the player's left.

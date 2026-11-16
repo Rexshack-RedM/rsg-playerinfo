@@ -5,6 +5,8 @@ const resName = typeof GetParentResourceName === 'function' ? GetParentResourceN
 
 let ctx = { labels: {}, show: {} };
 let lastKey = '';
+let tab = 'overview';
+let lastData = {};
 
 function post(name, data = {}) {
     return fetch(`https://${resName}/${name}`, {
@@ -329,30 +331,87 @@ function standingCard(D) {
             <div class="outlaw-text ${band}">${escapeHtml(O.text || L.no_data)}</div>
             <div class="track"><div class="fill stat-${band}" data-w="${pct}"></div></div>`;
     }
-    if (S.show_reputation) {
-        const rep = D.rep || [];
-        if (rep.length) {
-            body += `<div class="sub-label">${escapeHtml(L.reputation)}</div><div class="list">` +
-                rep.map(r => row('fa-solid fa-handshake', r.name, escapeHtml(r.value))).join('') + '</div>';
-        }
-    }
     if (!body) return '';
     return card('fa-solid fa-scale-balanced', L.sec_standing, body);
+}
+
+/* ---------- reputation tab ---------- */
+function prettyName(n) {
+    return String(n ?? '').replace(/[_-]+/g, ' ').trim().replace(/\b\w/g, c => c.toUpperCase());
+}
+
+function repTiles(rep) {
+    const L = ctx.labels;
+    const total = rep.reduce((a, r) => a + (Number(r.value) || 0), 0);
+    const top = rep.length ? rep[0] : null;
+    const tile = (icon, label, value, cls = '') => `<div class="tile ${cls}">
+        <div class="badge"><i class="${safeIcon(icon)}"></i></div>
+        <div>
+            <div class="tile-label">${escapeHtml(label)}</div>
+            <div class="tile-value">${value}</div>
+        </div>
+    </div>`;
+    return tile('fa-solid fa-star', L.rep_total_xp, escapeHtml(plain(total) ?? '0'), 'gold') +
+        tile('fa-solid fa-layer-group', L.rep_skills, escapeHtml(String(rep.length))) +
+        tile('fa-solid fa-trophy', L.rep_top, top ? escapeHtml(top.label || prettyName(top.name)) : val(null));
+}
+
+function repCard(r) {
+    const L = ctx.labels;
+    const name = r.label || prettyName(r.name);
+    const level = (L.rep_level || 'Level %s').replace('%s', escapeHtml(r.level));
+    const pill = r.max
+        ? `<span class="pill max">${escapeHtml(L.rep_max)}</span>`
+        : `<span class="pill">${level}</span>`;
+    const foot = r.max
+        ? `<span>${escapeHtml(plain(r.value))} ${escapeHtml(L.rep_xp)}</span><span>${level}</span>`
+        : `<span><b>${escapeHtml(plain(r.into))}</b> / ${escapeHtml(plain(r.need))} ${escapeHtml(L.rep_xp)}</span><span>${escapeHtml(plain(r.value))} ${escapeHtml(L.rep_xp)}</span>`;
+    return `<div class="rep-card">
+        <div class="rep-head">
+            <div class="badge"><i class="${safeIcon(r.icon || 'fa-solid fa-star')}"></i></div>
+            <div class="rep-name" title="${escapeHtml(name)}">${escapeHtml(name)}</div>
+            ${pill}
+        </div>
+        <div class="track"><div class="fill stat-good" data-w="${clamp(r.pct)}"></div></div>
+        <div class="rep-foot">${foot}</div>
+    </div>`;
+}
+
+function repBody(D) {
+    const rep = Array.isArray(D.rep) ? D.rep : [];
+    return rep.length
+        ? `<div class="rep-grid">${rep.map(repCard).join('')}</div>`
+        : `<div class="rep-empty">${escapeHtml(ctx.labels.rep_none)}</div>`;
+}
+
+function renderTabs() {
+    const L = ctx.labels;
+    const enabled = !ctx.exam && !!ctx.show.show_reputation;
+    const tabsEl = document.getElementById('tabs');
+    if (!enabled) { tab = 'overview'; tabsEl.classList.add('hidden'); tabsEl.innerHTML = ''; return; }
+    tabsEl.classList.remove('hidden');
+    tabsEl.innerHTML = [['overview', L.tab_overview], ['reputation', L.tab_reputation]]
+        .map(t => `<button class="tab-btn${tab === t[0] ? ' active' : ''}" data-tab="${t[0]}">${escapeHtml(t[1])}</button>`).join('');
 }
 
 /* ---------- render ---------- */
 function render(D, animate) {
     const scroll = [...colsEl.querySelectorAll('.col')].map(c => c.scrollTop);
 
+    renderTabs();
+    const repTab = tab === 'reputation' && !ctx.exam;
     app.classList.toggle('exam', !!ctx.exam);
-    heroEl.innerHTML = ctx.exam ? '' : tiles(D);
+    app.classList.toggle('tab-rep', repTab);
+    heroEl.innerHTML = ctx.exam ? '' : (repTab ? repTiles(D.rep || []) : tiles(D));
     const cols = ctx.exam
         ? [[medicalCard(D)]]
-        : [
-            [identityCard(D), employmentCard(D)],
-            [medicalCard(D)],
-            [standingCard(D), accountsCard(D)],
-        ];
+        : repTab
+            ? [[repBody(D)]]
+            : [
+                [identityCard(D), employmentCard(D)],
+                [medicalCard(D)],
+                [standingCard(D), accountsCard(D)],
+            ];
     colsEl.innerHTML = cols.map(c => `<div class="col">${c.join('')}</div>`).join('');
 
     [...colsEl.querySelectorAll('.col')].forEach((c, i) => { c.scrollTop = scroll[i] || 0; });
@@ -382,8 +441,10 @@ function open(d) {
     document.getElementById('subtitle').textContent = d.subtitle || '';
     if (d.closeLabel) document.getElementById('closeBtn2').textContent = d.closeLabel;
 
+    tab = 'overview';
     lastKey = JSON.stringify(d.data);
-    render(d.data || {}, true);
+    lastData = d.data || {};
+    render(lastData, true);
     app.classList.remove('hidden');
 }
 
@@ -392,7 +453,8 @@ function update(d) {
     const key = JSON.stringify(d.data);
     if (key === lastKey) return;
     lastKey = key;
-    render(d.data || {}, false);
+    lastData = d.data || {};
+    render(lastData, false);
 }
 
 function close() {
@@ -409,6 +471,13 @@ window.addEventListener('message', (e) => {
     if (d.action === 'open') open(d);
     else if (d.action === 'update') update(d);
     else if (d.action === 'close') close();
+});
+
+document.getElementById('tabs').addEventListener('click', (e) => {
+    const b = e.target.closest && e.target.closest('[data-tab]');
+    if (!b || b.dataset.tab === tab) return;
+    tab = b.dataset.tab === 'reputation' ? 'reputation' : 'overview';
+    render(lastData, true);
 });
 
 document.getElementById('closeBtn').addEventListener('click', requestClose);

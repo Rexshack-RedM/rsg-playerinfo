@@ -96,5 +96,14 @@
     "cl_treat_bandaged": "Tus contusiones están vendadas",
     "cl_treat_splinted": "Tus huesos lesionados están entablillados y sanarán poco a poco",
     "cl_exam_subtitle": "Examen médico",
-    "cl_bone_splinted": "Entablillado"
+    "cl_bone_splinted": "Entablillado",
+    "cl_tab_overview": "Resumen",
+    "cl_tab_reputation": "Reputación",
+    "cl_rep_total_xp": "XP total",
+    "cl_rep_skills": "Habilidades",
+    "cl_rep_top": "Mejor habilidad",
+    "cl_rep_level": "Nivel %s",
+    "cl_rep_max": "Nivel máximo",
+    "cl_rep_xp": "XP",
+    "cl_rep_none": "Aún no has ganado reputación"
 }

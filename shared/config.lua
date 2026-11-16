@@ -41,6 +41,18 @@ Config.PlayerInfoSetup = {
     show_reputation = true,
 }
 
+-- Reputation tab: XP per skill, read from the player's metadata.rep (set by other scripts with Player.Functions.AddRep).
+-- Shown when Config.PlayerInfoSetup.show_reputation is true. Cumulative XP needed to reach level L is floor(XPPerLevel * L ^ LevelGrowth).
+Config.Reputation = {
+    XPPerLevel = 100,            -- XP for level 1 (level 2 needs more, see LevelGrowth)
+    LevelGrowth = 1.5,           -- 1.0 = every level costs the same, higher = later levels cost more
+    MaxLevel = 50,               -- level cap (the bar shows full at the cap)
+    HideZero = false,            -- hide skills that are at 0 XP or below
+    -- Optional nicer names / icons per rep key (Font Awesome class). Skills not listed use the key as the name and a star icon.
+    -- Categories = { hunting = { label = 'Hunting', icon = 'fa-solid fa-crosshairs' } },
+    Categories = {},
+}
+
 -- Bone health tracking (feeds the Medical Check card).
 -- Each bone has a condition from 100 (healthy) down to 0 (broken). A hit lowers the condition of the bone that was hit.
 Config.Bones = {

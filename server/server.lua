@@ -152,6 +152,54 @@ local function getOutlaw(citizenid)
     return { value = value, text = text, band = band }
 end
 
+-- Cumulative XP needed to reach a level (see Config.Reputation)
+local function repXpForLevel(level)
+    local cfg = Config.Reputation or {}
+    return math.floor((tonumber(cfg.XPPerLevel) or 100) * (level ^ (tonumber(cfg.LevelGrowth) or 1.5)))
+end
+
+-- metadata.rep (name -> XP) as a list with level and progress, highest XP first
+local function getReputation(raw)
+    local list = {}
+    if type(raw) ~= 'table' then return list end
+    local cfg = Config.Reputation or {}
+    local maxLevel = math.max(1, math.floor(tonumber(cfg.MaxLevel) or 50))
+    local cats = type(cfg.Categories) == 'table' and cfg.Categories or {}
+
+    for name, amount in pairs(raw) do
+        local value = asNumber(amount)
+        if value and (not cfg.HideZero or value > 0) then
+            local level = 0
+            while level < maxLevel and value >= repXpForLevel(level + 1) do level = level + 1 end
+            local floorXp = level > 0 and repXpForLevel(level) or 0
+            local atMax = level >= maxLevel
+            local span = atMax and 0 or (repXpForLevel(level + 1) - floorXp)
+            local pct = 100
+            if not atMax then
+                pct = span > 0 and math.max(0, math.min(100, math.floor((value - floorXp) / span * 100))) or 0
+            end
+            local cat = type(cats[name]) == 'table' and cats[name] or {}
+            list[#list + 1] = {
+                name = tostring(name),
+                label = type(cat.label) == 'string' and cat.label or nil,
+                icon = type(cat.icon) == 'string' and cat.icon or nil,
+                value = math.floor(value),
+                level = level,
+                into = math.max(0, math.floor(value - floorXp)),
+                need = math.floor(span),
+                pct = pct,
+                max = atMax,
+            }
+        end
+    end
+
+    table.sort(list, function(a, b)
+        if a.value ~= b.value then return a.value > b.value end
+        return a.name < b.name
+    end)
+    return list
+end
+
 local function getGender(raw)
     if raw == nil then return nil end
     local s = tostring(raw):lower()
@@ -186,16 +234,8 @@ RSGCore.Functions.CreateCallback('rsg-playerstats:server:getPlayerData', functio
     local meta = pd.metadata or {}
     local citizenid = pd.citizenid or ''
 
-    -- Reputation (name -> amount)
-    local rep = {}
-    if type(meta.rep) == 'table' then
-        for name, amount in pairs(meta.rep) do
-            if type(amount) == 'number' then
-                rep[#rep + 1] = { name = tostring(name), value = amount }
-            end
-        end
-        table.sort(rep, function(a, b) return a.name < b.name end)
-    end
+    -- Reputation (name -> XP) with level and progress
+    local rep = (Config.PlayerInfoSetup or {}).show_reputation and getReputation(meta.rep) or {}
 
     -- Regional bank accounts, only when a balance exists
     local branches = {}

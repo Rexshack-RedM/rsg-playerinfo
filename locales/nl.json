@@ -96,5 +96,14 @@
     "cl_treat_bandaged": "Je kneuzingen zijn verbonden",
     "cl_treat_splinted": "Je gewonde botten zijn gespalkt en genezen langzaam",
     "cl_exam_subtitle": "Medisch onderzoek",
-    "cl_bone_splinted": "Gespalkt"
+    "cl_bone_splinted": "Gespalkt",
+    "cl_tab_overview": "Overzicht",
+    "cl_tab_reputation": "Reputatie",
+    "cl_rep_total_xp": "Totaal XP",
+    "cl_rep_skills": "Vaardigheden",
+    "cl_rep_top": "Beste vaardigheid",
+    "cl_rep_level": "Niveau %s",
+    "cl_rep_max": "Maximaal niveau",
+    "cl_rep_xp": "XP",
+    "cl_rep_none": "Nog geen reputatie verdiend"
 }

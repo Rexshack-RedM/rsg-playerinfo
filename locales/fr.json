@@ -96,5 +96,14 @@
     "cl_treat_bandaged": "Vos contusions sont bandées",
     "cl_treat_splinted": "Vos os blessés sont immobilisés et guériront lentement",
     "cl_exam_subtitle": "Examen médical",
-    "cl_bone_splinted": "Attelle posée"
+    "cl_bone_splinted": "Attelle posée",
+    "cl_tab_overview": "Aperçu",
+    "cl_tab_reputation": "Réputation",
+    "cl_rep_total_xp": "XP total",
+    "cl_rep_skills": "Compétences",
+    "cl_rep_top": "Meilleure compétence",
+    "cl_rep_level": "Niveau %s",
+    "cl_rep_max": "Niveau max",
+    "cl_rep_xp": "XP",
+    "cl_rep_none": "Aucune réputation acquise pour l'instant"
 }

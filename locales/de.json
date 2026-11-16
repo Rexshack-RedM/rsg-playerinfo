@@ -96,5 +96,14 @@
     "cl_treat_bandaged": "Deine Prellungen sind verbunden",
     "cl_treat_splinted": "Deine verletzten Knochen sind geschient und heilen langsam",
     "cl_exam_subtitle": "Medizinische Untersuchung",
-    "cl_bone_splinted": "Geschient"
+    "cl_bone_splinted": "Geschient",
+    "cl_tab_overview": "Übersicht",
+    "cl_tab_reputation": "Ansehen",
+    "cl_rep_total_xp": "Gesamt-XP",
+    "cl_rep_skills": "Fähigkeiten",
+    "cl_rep_top": "Beste Fähigkeit",
+    "cl_rep_level": "Stufe %s",
+    "cl_rep_max": "Höchste Stufe",
+    "cl_rep_xp": "XP",
+    "cl_rep_none": "Noch kein Ansehen erworben"
 }

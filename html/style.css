@@ -272,6 +272,44 @@ body {
 .bs.st-bruised, .bs.st-cracked { color: var(--rdr-amber); }
 .bs.st-fractured, .bs.st-broken { color: var(--rdr-cost-over); }
 
+/* ---------- tabs ---------- */
+.tabs { display: flex; justify-content: center; gap: 0.6rem; margin-bottom: 0.9rem; flex: none; }
+.tab-btn {
+    padding: 0.5rem 1.8rem;
+    background: linear-gradient(180deg, #1c1c1c, #0a0a0a);
+    border: 1px solid rgba(255,255,255,0.12); border-radius: 2px;
+    color: var(--rdr-muted); font-family: inherit; font-size: 0.8rem;
+    text-transform: uppercase; letter-spacing: 2px; cursor: pointer;
+    transition: all 0.15s ease;
+}
+.tab-btn:hover { border-color: var(--rdr-gold-dim); color: var(--rdr-text); }
+.tab-btn.active {
+    background: linear-gradient(180deg, #2e2e2e, #141414);
+    border-color: var(--rdr-gold); color: var(--rdr-gold);
+}
+
+/* ---------- reputation tab ---------- */
+#app.tab-rep .columns { grid-template-columns: minmax(0, 1fr); }
+.rep-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr)); gap: 0.9rem; align-content: start; }
+.rep-card {
+    padding: 0.8rem 1rem 0.9rem; border-radius: 2px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.18));
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: inset 0 0 24px rgba(0,0,0,0.35);
+    transition: all 0.15s ease;
+}
+.rep-card:hover { border-color: var(--rdr-gold-dim); transform: translateX(2px); }
+.rep-head { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.7rem; }
+.rep-name {
+    flex: 1; min-width: 0; font-size: 0.95rem; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 1.5px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.rep-foot { display: flex; justify-content: space-between; margin-top: 0.4rem; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--rdr-muted); }
+.rep-foot b { color: var(--rdr-text); font-weight: 500; }
+.pill.max { border-color: var(--rdr-amber); color: var(--rdr-amber); }
+.rep-empty { padding: 2rem; text-align: center; font-style: italic; color: var(--rdr-muted); }
+
 /* ---------- footer button ---------- */
 .actions { display: flex; justify-content: center; margin-top: 1rem; flex: none; }
 .wood-btn {

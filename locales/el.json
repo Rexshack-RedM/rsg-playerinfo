@@ -96,5 +96,14 @@
     "cl_treat_bandaged": "Οι μώλωπές σου έχουν επιδεθεί",
     "cl_treat_splinted": "Τα τραυματισμένα οστά σου έχουν νάρθηκα και θα γιατρευτούν αργά",
     "cl_exam_subtitle": "Ιατρική εξέταση",
-    "cl_bone_splinted": "Με νάρθηκα"
+    "cl_bone_splinted": "Με νάρθηκα",
+    "cl_tab_overview": "Επισκόπηση",
+    "cl_tab_reputation": "Φήμη",
+    "cl_rep_total_xp": "Συνολικά XP",
+    "cl_rep_skills": "Δεξιότητες",
+    "cl_rep_top": "Κορυφαία δεξιότητα",
+    "cl_rep_level": "Επίπεδο %s",
+    "cl_rep_max": "Μέγιστο επίπεδο",
+    "cl_rep_xp": "XP",
+    "cl_rep_none": "Δεν έχεις κερδίσει φήμη ακόμη"
 }

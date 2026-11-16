@@ -96,5 +96,14 @@
     "cl_treat_bandaged": "Vânătăile tale sunt bandajate",
     "cl_treat_splinted": "Oasele tale rănite sunt imobilizate și se vor vindeca încet",
     "cl_exam_subtitle": "Examinare medicală",
-    "cl_bone_splinted": "Imobilizat"
+    "cl_bone_splinted": "Imobilizat",
+    "cl_tab_overview": "Prezentare generală",
+    "cl_tab_reputation": "Reputație",
+    "cl_rep_total_xp": "XP total",
+    "cl_rep_skills": "Abilități",
+    "cl_rep_top": "Cea mai bună abilitate",
+    "cl_rep_level": "Nivel %s",
+    "cl_rep_max": "Nivel maxim",
+    "cl_rep_xp": "XP",
+    "cl_rep_none": "Nicio reputație câștigată încă"
 }

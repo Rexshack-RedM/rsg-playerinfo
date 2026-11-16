@@ -96,5 +96,14 @@
     "cl_treat_bandaged": "Your bruises are bandaged",
     "cl_treat_splinted": "Your injured bones are splinted and will slowly heal",
     "cl_exam_subtitle": "Medical examination",
-    "cl_bone_splinted": "Splinted"
+    "cl_bone_splinted": "Splinted",
+    "cl_tab_overview": "Overview",
+    "cl_tab_reputation": "Reputation",
+    "cl_rep_total_xp": "Total XP",
+    "cl_rep_skills": "Skills",
+    "cl_rep_top": "Top Skill",
+    "cl_rep_level": "Level %s",
+    "cl_rep_max": "Max level",
+    "cl_rep_xp": "XP",
+    "cl_rep_none": "No reputation earned yet"
 }

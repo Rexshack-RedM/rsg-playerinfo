@@ -96,5 +96,14 @@
     "cl_treat_bandaged": "Le tue contusioni sono fasciate",
     "cl_treat_splinted": "Le tue ossa ferite sono steccate e guariranno lentamente",
     "cl_exam_subtitle": "Visita medica",
-    "cl_bone_splinted": "Steccato"
+    "cl_bone_splinted": "Steccato",
+    "cl_tab_overview": "Panoramica",
+    "cl_tab_reputation": "Reputazione",
+    "cl_rep_total_xp": "XP totale",
+    "cl_rep_skills": "Abilità",
+    "cl_rep_top": "Abilità migliore",
+    "cl_rep_level": "Livello %s",
+    "cl_rep_max": "Livello massimo",
+    "cl_rep_xp": "XP",
+    "cl_rep_none": "Nessuna reputazione ancora guadagnata"
 }

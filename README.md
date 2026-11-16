@@ -28,7 +28,8 @@ Version 3.1.0 · Full technical details in [DOCS.md](DOCS.md)
 - 🪪 Identity: date of birth, gender, nationality, blood type, citizen ID, server ID, fingerprint, wallet ID, callsign.
 - 💼 Employment: job, grade, duty status, gang and every other job you hold.
 - 🦴 **Medical check:** a skeletal examination on an anatomical skeleton illustration (ribs, vertebrae, long bones, hands, feet) with a condition for 19 bones (skull, neck, ribcage, lower spine, pelvis, collarbones, upper arms, forearms, hands, thighs, shins, feet). Healthy bones are plain; injured bones glow amber (bruised, cracked) or red (fractured, broken) and show a crack mark.
-- ⚖️ Standing: outlaw status gauge and reputation list.
+- ⚖️ Standing: outlaw status gauge.
+- ⭐ **Reputation tab:** a second tab next to Overview that shows your XP per skill (read from `metadata.rep`) with level, progress bar, total XP, number of skills and your top skill. Level cap and XP curve are set in `Config.Reputation`; hide the tab with `show_reputation = false`.
 - 🩺 Bone damage is tracked from the bone that was hit (falls hurt the legs) and saved with your character.
 - 🏥 rsg-medic treatment (full heal / revive) restores all bones; bruises also mend slowly on their own.
 - 🔄 Live refresh while open (`Config.RefreshInterval`).
@@ -75,7 +76,12 @@ ensure rsg-playerinfo
 | `Config.Effects.Legs.LimpNative` | `false` | Also set the undocumented injured-locomotion flag (not verified in-game) |
 | `Config.Effects.Arms.AimSway` | `{0, 0.25, 0.6, 1.0}` | Aim sway in degrees by severity while aiming |
 | `Config.Effects.Arms.BlockReloadFrom` | `4` | Broken arm cannot reload (0 = never) |
-| `Config.PlayerInfoSetup.show_*` | `true` | Show / hide each field (see list below) |
+| `Config.PlayerInfoSetup.show_*` | `true` | Show / hide each field (see list below). `show_reputation` controls the whole Reputation tab |
+| `Config.Reputation.XPPerLevel` | `100` | XP needed for level 1. Total XP for level L is `floor(XPPerLevel * L ^ LevelGrowth)` |
+| `Config.Reputation.LevelGrowth` | `1.5` | How fast levels get more expensive (1.0 = flat) |
+| `Config.Reputation.MaxLevel` | `50` | Level cap; the bar shows full at the cap |
+| `Config.Reputation.HideZero` | `false` | Hide skills at 0 XP or below |
+| `Config.Reputation.Categories` | `{}` | Optional `{ key = { label, icon } }` for nicer names / Font Awesome icons per rep key |
 
 `show_` flags: `cash`, `bloodmoney`, `gold`, `bank`, `rhobank`, `valbank`, `blkbank`, `armbank`, `birthdate`, `gender`, `nationality`, `bloodtype`, `citizenid`, `serverid`, `fingerprint`, `walletid`, `callsign`, `job`, `job_grade`, `duty`, `gang`, `other_jobs`, `bones`, `outlawstatus`, `reputation`.
 
@@ -93,6 +99,7 @@ Injured bones now matter: cracked or worse legs slow you down, fractured legs st
 
 ## 🎮 How to use
 - Type `/info` to open the dashboard.
+- Switch between the **Overview** and **Reputation** tabs with the buttons under the header.
 - Close with the ✕ button, the Close button, `ESC` or `Backspace`.
 - Hover a bone on the map (or a row in the list) to highlight it in both places.
 - `/healbones [id]` (admin) restores every bone of yourself or another player.

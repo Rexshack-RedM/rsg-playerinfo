@@ -96,5 +96,14 @@
     "cl_treat_bandaged": "Suas contusões foram enfaixadas",
     "cl_treat_splinted": "Seus ossos feridos foram imobilizados e vão se curar devagar",
     "cl_exam_subtitle": "Exame médico",
-    "cl_bone_splinted": "Imobilizado"
+    "cl_bone_splinted": "Imobilizado",
+    "cl_tab_overview": "Visão geral",
+    "cl_tab_reputation": "Reputação",
+    "cl_rep_total_xp": "XP total",
+    "cl_rep_skills": "Habilidades",
+    "cl_rep_top": "Melhor habilidade",
+    "cl_rep_level": "Nível %s",
+    "cl_rep_max": "Nível máximo",
+    "cl_rep_xp": "XP",
+    "cl_rep_none": "Nenhuma reputação conquistada ainda"
 }

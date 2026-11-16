@@ -96,5 +96,14 @@
     "cl_treat_bandaged": "Twoje stłuczenia są zabandażowane",
     "cl_treat_splinted": "Twoje uszkodzone kości są unieruchomione i będą powoli się goić",
     "cl_exam_subtitle": "Badanie lekarskie",
-    "cl_bone_splinted": "Unieruchomiona"
+    "cl_bone_splinted": "Unieruchomiona",
+    "cl_tab_overview": "Przegląd",
+    "cl_tab_reputation": "Reputacja",
+    "cl_rep_total_xp": "Łączne XP",
+    "cl_rep_skills": "Umiejętności",
+    "cl_rep_top": "Najlepsza umiejętność",
+    "cl_rep_level": "Poziom %s",
+    "cl_rep_max": "Maksymalny poziom",
+    "cl_rep_xp": "XP",
+    "cl_rep_none": "Nie zdobyto jeszcze reputacji"
 }

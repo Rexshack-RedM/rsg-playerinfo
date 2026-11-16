@@ -96,5 +96,14 @@
     "cl_treat_bandaged": "打撲に包帯を巻きました",
     "cl_treat_splinted": "負傷した骨に添え木を当てました。ゆっくり回復します",
     "cl_exam_subtitle": "健康診断",
-    "cl_bone_splinted": "添え木済み"
+    "cl_bone_splinted": "添え木済み",
+    "cl_tab_overview": "概要",
+    "cl_tab_reputation": "評判",
+    "cl_rep_total_xp": "合計XP",
+    "cl_rep_skills": "スキル",
+    "cl_rep_top": "最高スキル",
+    "cl_rep_level": "レベル %s",
+    "cl_rep_max": "最大レベル",
+    "cl_rep_xp": "XP",
+    "cl_rep_none": "まだ評判を獲得していません"
 }
