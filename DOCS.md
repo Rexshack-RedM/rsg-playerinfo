@@ -202,3 +202,156 @@ Bone state is client-reported (the server validates range and shape but cannot t
 | Screen too big / small | Change `Config.ScreenPercent` |
 
 Support: https://rexshack.tebex.store
+
+<!-- BEGIN AUTO-REFERENCE (generated from the code; re-run the generator instead of editing by hand) -->
+
+## Technical reference
+
+Generated from the source of **rsg-playerinfo 3.1.1**. Names, arguments and defaults below are read straight from the code.
+
+### Dependencies
+
+`rsg-core`, `oxmysql`, `rsg-inventory`
+
+### Configuration
+
+| Option | Default | Notes |
+|---|---|---|
+| `Config.ScreenPercent` | `80` | Size of the info screen as a percentage of the game screen (50-100). |
+| `Config.RefreshInterval` | `5000` | While the screen is open, refresh the data every X milliseconds (0 = off, minimum 1000). |
+| `Config.PlayerInfoSetup` | `table` | Show / hide individual fields and sections. |
+| `Config.Reputation` | `table` | Shown when Config.PlayerInfoSetup.show_reputation is true. Cumulative XP needed to reach level L is floor(XPPe |
+| `Config.XPPerLevel` | `100` |  |
+| `Config.LevelGrowth` | `1.5` |  |
+| `Config.MaxLevel` | `50` |  |
+| `Config.HideZero` | `false` |  |
+| `Config.Categories` | `{}` | Categories = { hunting = { label = 'Hunting', icon = 'fa-solid fa-crosshairs' } }, |
+| `Config.Bones` | `table` | Each bone has a condition from 100 (healthy) down to 0 (broken). A hit lowers the condition of the bone that w |
+| `Config.Enabled` | `true` |  |
+| `Config.PollInterval` | `150` |  |
+| `Config.MinDamagePercent` | `4` |  |
+| `Config.DamageScale` | `1.0` |  |
+| `Config.RecoveryPerMinute` | `2.0` |  |
+| `Config.SplintRecoveryPerMinute` | `0.5` |  |
+| `Config.Thresholds` | `{ healthy = 90, bruised = 60, cracked = 30 }` | Condition thresholds: >= healthy = healthy, >= bruised = bruised, >= cracked = cracked, > 0 = fractured, 0 = b |
+| `Config.FallWeights` | `{ foot = 1.0, shin = 0.7, thigh = 0.4, pelvis = 0.2 }` | A fall damages the legs instead of the "last damage bone" (share of the damage each bone takes, both sides) |
+| `Config.RestoreOnMedic` | `true` | Doctors / revives restore all bones: rsg-medic:client:revive and rsg-medic:client:heal (-1 = full heal) |
+| `Config.Debug` | `false` |  |
+| `Config.Effects` | `table` | Tables are indexed by severity; a missing/0 entry means no effect at that level. The worst bone of each group  |
+| `Config.PublishState` | `true` |  |
+| `Config.Legs` | `table` |  |
+| `Config.Arms` | `table` |  |
+| `Config.Treatment` | `table` | A splinted bone loses its splint when it is hit again. Doctors (rsg-medic) can treat others, see Config.Doctor |
+| `Config.RegisterItems` | `true` |  |
+| `Config.Bandage` | `{ item = 'bone_bandage', label = 'Bone Bandage', weight = 100, image =` |  |
+| `Config.Splint` | `{ item = 'bone_splint',  label = 'Splint',       weight = 300, image =` |  |
+| `Config.SplintEffectCap` | `2` |  |
+| `Config.Doctor` | `table` | Doctor tools: /examinebones shows a patient's bone map, /treatbones bandages and splints them. |
+| `Config.Jobs` | `{ 'medic' }` |  |
+| `Config.RequireDuty` | `true` |  |
+| `Config.Distance` | `3.0` |  |
+| `Config.ExamCommand` | `'examinebones'` |  |
+| `Config.TreatCommand` | `'treatbones'` |  |
+| `Config.UseItems` | `true` |  |
+| `Config.Pain` | `table` | Screen flash and pain sound when a bone gets worse. Severity: 1 bruised, 2 cracked, 3 fractured, 4 broken. |
+| `Config.MinSeverity` | `2` |  |
+| `Config.Cooldown` | `4000` |  |
+| `Config.Flash` | `'MP_HealthDrop'` |  |
+| `Config.FlashDuration` | `1500` |  |
+| `Config.Sound` | `true` |  |
+| `Config.PainId` | `10` |  |
+| `Config.Logging` | `table` | Log new fractures/breaks to rsg-log (when running) |
+| `Config.Channel` | `'playerinfo'` |  |
+| `Config.Color` | `'orange'` |  |
+| `Config.AllowPushToTalkWhileOpen` | `true` | While NUI is open, block game controls but allow push-to-talk. |
+| `Config.PushToTalkControls` | `table` |  |
+
+### Exports
+
+**Server**
+
+| Export | Arguments | File |
+|---|---|---|
+| `GetBones` | `src` | `server/server.lua` |
+| `HealBones` | `src, key` | `server/server.lua` |
+| `DamageBone` | `src, key, amount` | `server/server.lua` |
+| `OpenPlayerInfo` | `src` | `server/server.lua` |
+| `GetSeverity` | `src, what` | `server/server.lua` |
+
+**Client**
+
+| Export | Arguments | File |
+|---|---|---|
+| `GetBoneHealth` | `` | `client/bones.lua` |
+| `HealBones` | `key` | `client/bones.lua` |
+| `DamageBone` | `key, amount` | `client/bones.lua` |
+| `GetBoneStatus` | `key` | `client/bones.lua` |
+| `GetSplints` | `` | `client/bones.lua` |
+| `BandageBones` | `` | `client/bones.lua` |
+| `SplintBones` | `` | `client/bones.lua` |
+| `HasInjury` | `what` | `client/bones.lua` |
+| `OpenPlayerInfo` | `` | `client/client.lua` |
+| `ClosePlayerInfo` | `` | `client/client.lua` |
+| `IsPlayerInfoOpen` | `` | `client/client.lua` |
+| `GetSeverity` | `what` | `client/effects.lua` |
+| `SetEffectsEnabled` | `state` | `client/effects.lua` |
+| `AreEffectsEnabled` | `` | `client/effects.lua` |
+
+```lua
+-- example
+local result = exports['rsg-playerinfo']:GetBones(src)
+```
+
+### Callbacks
+
+| Callback | Side | Arguments | File |
+|---|---|---|---|
+| `rsg-playerinfo:client:getBones` | client | `cb` | `client/bones.lua` |
+| `rsg-playerstats:server:getPlayerData` | server | `source, cb` | `server/server.lua` |
+
+```lua
+-- client side
+RSGCore.Functions.TriggerCallback('rsg-playerinfo:client:getBones', function(result)
+    -- use result
+end)
+```
+
+### Events
+
+Server events can be fired by any client, so every handler re-validates the player, the arguments and any permission, distance or cooldown on the server. Never add a reward to a handler without those checks.
+
+| Event | Side | Arguments | File |
+|---|---|---|---|
+| `RSGCore:Client:OnPlayerLoaded` | client | `` | `client/bones.lua` |
+| `RSGCore:Client:OnPlayerUnload` | client | `` | `client/bones.lua` |
+| `rsg-medic:client:revive` | client | `` | `client/bones.lua` |
+| `rsg-medic:client:heal` | client | `amount` | `client/bones.lua` |
+| `rsg-playerinfo:client:damageBone` | client | `key, amount` | `client/bones.lua` |
+| `rsg-playerinfo:client:healBones` | client | `key` | `client/bones.lua` |
+| `rsg-playerstats:client:openPlayerStats` | client | `` | `client/client.lua` |
+| `rsg-playerinfo:client:openExam` | client | `info` | `client/client.lua` |
+| `rsg-playerinfo:client:useTreatment` | client | `kind` | `client/treatment.lua` |
+| `rsg-playerinfo:client:applyTreatment` | client | `kind` | `client/treatment.lua` |
+| `rsg-playerinfo:server:saveBones` | server | `bones, splints` | `server/server.lua` |
+| `rsg-playerinfo:server:treatCancel` | server | `` | `server/server.lua` |
+| `rsg-playerinfo:server:treatDone` | server | `kind` | `server/server.lua` |
+
+```lua
+-- from a client script
+TriggerServerEvent('rsg-playerinfo:server:saveBones', bones, splints)
+-- from a server script
+TriggerClientEvent('RSGCore:Client:OnPlayerLoaded', source)
+```
+
+### Commands
+
+| Command | Notes | File |
+|---|---|---|
+| `/info` | locale('sv_view_stats') | `server/server.lua` |
+| `/healbones` | locale('sv_healbones_help') | `server/server.lua` |
+
+### Locales
+
+Language files in `locales/`: `de`, `el`, `en`, `es`, `fr`, `it`, `ja`, `nl`, `pl`, `pt-br`, `ro`. Set the language with `setr rsg:locale "en"`.
+
+<!-- END AUTO-REFERENCE -->
