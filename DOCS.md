@@ -26,7 +26,7 @@
 | `client/client.lua` | NUI focus (push-to-talk safe), payload builder, live refresh |
 | `client/bones.lua` | Bone damage tracker, recovery, medic hooks and exports |
 | `html/index.html`, `style.css`, `script.js` | Dashboard UI |
-| `locales/*.json` | Translations (en, de, el, es, fr, it, ja, nl, pl, pt-br, ro) |
+| `locales/*.json` | Translations (en, de, el, es, fr, it, ja, nl, pl, pt-br, ro, ru) |
 
 ## Flow
 1. `/info` → server sends `rsg-playerstats:client:openPlayerStats` to the caller.
@@ -352,6 +352,6 @@ TriggerClientEvent('RSGCore:Client:OnPlayerLoaded', source)
 
 ### Locales
 
-Language files in `locales/`: `de`, `el`, `en`, `es`, `fr`, `it`, `ja`, `nl`, `pl`, `pt-br`, `ro`. Set the language with `setr rsg:locale "en"`.
+Language files in `locales/`: `de`, `el`, `en`, `es`, `fr`, `it`, `ja`, `nl`, `pl`, `pt-br`, `ro`, `ru`. Set the language with `setr rsg:locale "en"`.
 
 <!-- END AUTO-REFERENCE -->

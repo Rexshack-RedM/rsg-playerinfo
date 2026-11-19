@@ -17,7 +17,7 @@ Version 3.1.0 · Full technical details in [DOCS.md](DOCS.md)
 - **rsg-inventory** (treatment items), **rsg-medic** (doctor job, optional)
 - Optional: **rsg-banking** (shows your total across all banks), **rsg-log** (bone injury logs)
 
-**Locales included:** `en`, `de`, `el`, `es`, `fr`, `it`, `ja`, `nl`, `pl`, `pt-br`, `ro`
+**Locales included:** `en`, `de`, `el`, `es`, `fr`, `it`, `ja`, `nl`, `pl`, `pt-br`, `ro`, `ru`
 **License:** GPL‑3.0
 
 ---
